@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Mio Portfolio Professionale</title>
+    <link rel="stylesheet" href="style.css">    
+    <style>
+        /* ...existing code... */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #fff; /* Ensure the white background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            height: 500px; /* Set a consistent height for all project cards */
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto; /* Maintain the image's aspect ratio */
+            object-fit: cover; /* Ensure the image covers its container */
+        }
+
+        .project-content {
+            padding: 20px;
+            flex-grow: 1; /* Allow the content to expand */
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="#" class="logo">My Portfolio</a>
+                <ul class="nav-links" >
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Chi Sono</a></li>
+                    <li><a href="#skills">Competenze</a></li>
+                    <li><a href="#projects">Progetti Svolti</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h3 class="hero-tagline">Studente dell'I.I.S. Blaise Pascal</h3>
+                    <h1 class="hero-name">Samuele Macrì</h1>
+                    <p class="hero-description">Benvenuto nel mio portfolio digitale. Sono uno studente appassionato di informatica. Attraverso questo portfolio potrai conoscere il mio percorso formativo, le mie competenze e i progetti PCTO che ho svolto.</p>
+                    <a href="#contact" class="hero-cta">Contattami</a>
+                </div>
+                <div class="hero-image">
+                    <img src="img/me.jpg" alt="Il mio profilo" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Chi Sono</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="img/IMG-20250415-WA0014.jpg" alt="Io a scuola">
+                </div>
+                <div class="about-text">
+                    <h3 class="about-subtitle">Un po' di me</h3>
+                    <h2 class="about-title">La mia formazione e passioni</h2>
+                    <p class="about-description">Sono uno studente dell'indirizzo Informatica dell'I.I.S. Blaise Pascal. Il mio percorso formativo mi ha permesso di sviluppare competenze in vari ambiti, con particolare interesse nelle materie materie del futuro.</p>
+                    <p class="about-description">Mi contraddistingue la curiosità e la voglia di imparare continuamente cose nuove. Nel tempo libero mi dedico all'allenamento e ad attività socialmente utili, soprattutto nel periodo estivo, che mi permettono di ampliare le mie competenze anche al di fuori dell'ambito scolastico.</p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <h3 class="highlight-number">3</h3>
+                            <p class="highlight-text">Progetti PCTO</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h3 class="highlight-number">2</h3>
+                            <p class="highlight-text">Lingue Parlate</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h3 class="highlight-number">Work in Progress</h3>
+                            <p class="highlight-text">Competenze Tecniche</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title">Le Mie Competenze</h2>
+            <div class="skills-content">
+                <div class="skills-tabs">
+                    <div class="skills-tab active">Linguistiche</div>
+                    <div class="skills-tab">Digitali</div>
+                    <div class="skills-tab">Tecniche</div>
+                    <div class="skills-tab">Trasversali</div>
+                </div>
+                <div class="skills-tab-content">
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-name">
+                                <span>Italiano</span>
+                                <span class="skill-level">Livello:</span>
+                            </div>
+                            <p class="skill-status">Work in Progress</p>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-name">
+                                <span>Inglese</span>
+                                <span class="skill-level">Livello:</span>
+                            </div>
+                            <p class="skill-status">Work in Progress</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title">Progetti PCTO</h2>
+            <div class="projects-content">
+                <div class="year-tabs">
+                    <div class="year-tab active">Terzo Anno</div>
+                    <div class="year-tab">Quarto Anno</div>
+                    <div class="year-tab">Quinto Anno</div>
+                </div>
+                
+                <!-- Terzo Anno Projects -->
+                <div class="projects-grid">
+                    <!-- Progetti del Terzo Anno -->
+                     <a href="ust.html">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/ust1.jpg" alt="Progetto 1">
+                            <div class="project-category">Formazione</div>Web Development                                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Progetto UST</h3>
+                            
+                            <div class="project-period">30 Ottobre 2024</div>
+                            <p class="project-description">Una lezione introduttiva sui contenuti del percorso PCTO promosso dal Ministero, rivolta a tutti gli indirizzi scolastici. L'incontro, tenuto dal prof. Vairo, ha offerto una panoramica sulle opportunità formative e sulle attività previste.</p>
+                            <div class="project-skills">
+                                <span class="project-skill">Le basi dei PCTO</span> 
+                                <span class="project-skill">Conoscenze</span>
+                                                             
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="montasmonta.html">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/ms1.jpg" alt="Progetto 2">
+                            <div class="project-category">Praticità</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Progetto Monta&Smonta</h3>
+                            
+                            <div class="project-period">10 Gennaio 2025</div>
+                            <p class="project-description">Un progetto educativo pratico che permette di esplorare i componenti interni del PC attraverso lo smontaggio e il rimontaggio. Favorisce l'apprendimento attivo e la comprensione diretta della tecnologia, rendendo l'esperienza coinvolgente e istruttiva.</p>
+                            <div class="project-skills">
+                                <span class="project-skill">Un po' di Hardware</span>
+                                <span class="project-skill">Manualità</span>
+                                <span class="project-skill">Precisione</span>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+
+                    <a href="busconnect.html">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/bc1.jpg" alt="Progetto 3">
+                            <div class="project-category">Comunicazione</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Progetto BUSCONNECT</h3>
+                                                        <div class="project-period">Febbraio - Marzo 2025</div>
+                            <p class="project-description">Un progetto in cui studenti di terza media aiutano gli anziani dell'associazione AUSER a migliorare le loro competenze informatiche. Attraverso incontri pratici, favoriscono l'inclusione digitale e lo scambio intergenerazionale. Un'esperienza che rafforza i legami e promuove la conoscenza tecnologica.</p>
+                            <div class="project-skills">
+                                <span class="project-skill">Adobe Photoshop</span>
+                                <span class="project-skill">Adobe InDesign</span>
+                                <span class="project-skill">Grafica</span>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <!-- Quarto Anno Projects -->
+                <div class="projects-grid" style="display: none;">
+                                        <div class="empty-projects">
+                        <h3 class="empty-title">Progetti in arrivo!</h3>
+                        <p class="empty-description">I progetti PCTO del quarto anno saranno aggiunti non appena disponibili. Rimanete sintonizzati per scoprire le mie future esperienze professionali e i progetti che realizzerò.</p>
+                    </div>
+                </div>
+                
+                <!-- Quinto Anno Projects -->
+                <div class="projects-grid" style="display: none;">
+                    <!-- Progetti del Quinto Anno -->
+                    <div class="empty-projects">
+                        <h3 class="empty-title">Progetti in arrivo!</h3>
+                        <p class="empty-description">I progetti PCTO del quinto anno saranno aggiunti non appena disponibili. Rimanete sintonizzati per scoprire le mie future esperienze professionali e i progetti che realizzerò.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contattami</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 class="contact-title">Informazioni di Contatto</h3>
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telefono</h4>
+                                <p>+39 XXX XXX XXX</p>
+                            </div>
+                        </li>
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>samuele.macri@studenti.iispascal.it</p>
+                            </div>
+                        </li>
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Indirizzo</h4>
+                                <p>Via XXXXXX, XXXX</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Portfolio</div>
+            <p class="footer-text">Grazie per aver visitato il mio portfolio. Spero di averti dato una buona panoramica delle mie competenze e dei progetti su cui ho lavorato durante il mio percorso scolastico.</p>
+            <p class="footer-copyright">© 2025 Samuele Macrì. </p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('fade-out');
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+        
+        // Header sticky
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 100);
+        });
+        
+        // Contenuti per ciascuna tab di competenze
+        const skillsData = {
+            'Linguistiche': `
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">
+                            <span>Italiano</span>
+                            <span class="skill-level">Livello:</span>
+                        </div>
+                        <p class="skill-status">Work in Progress</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">
+                            <span>Inglese</span>
+                            <span class="skill-level">Livello:</span>
+                        </div>
+                        <p class="skill-status">Work in Progress</p>
+                    </div>
+                </div>
+            `,
+            'Digitali': `
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span class="skill-level">Livello:</span>
+                        </div>
+                        <p class="skill-status">Work in Progress</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">
+                            <span>C++</span>
+                            <span class="skill-level">Livello:</span>
+                        </div>
+                        <p class="skill-status">Work in Progress</p>
+                    </div>
+                </div>
+            `,
+            'Tecniche': `
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">
+                            <span>Programmazione</span>
+                            <span class="skill-level">Livello:</span>
+                        </div>
+                        <p class="skill-status">Work in Progress</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">
+                            <span>Database</span>
+                            <span class="skill-level">Livello:</span>
+                        </div>
+                        <p class="skill-status">Work in Progress</p>
+                    </div>
+                </div>
+            `,
+            'Trasversali': `
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">
+                            <span>Team Working</span>
+                            <span class="skill-level">Livello:</span>
+                        </div>
+                        <p class="skill-status">Work in Progress</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">
+                            <span>Problem Solving</span>
+                            <span class="skill-level">Livello:</span>
+                        </div>
+                        <p class="skill-status">Work in Progress</p>
+                    </div>
+                </div>
+            `
+        };
+
+        // Gestione delle tabs per le competenze
+        const skillsTabs = document.querySelectorAll('.skills-tab');
+        const skillsContent = document.querySelector('.skills-tab-content');
+
+        skillsTabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                // Rimuove la classe active da tutte le tabs
+                skillsTabs.forEach(t => t.classList.remove('active'));
+                // Aggiunge la classe active alla tab cliccata
+                this.classList.add('active');
+                // Aggiorna il contenuto in base alla tab selezionata
+                const tabName = this.textContent;
+                skillsContent.innerHTML = skillsData[tabName];
+            });
+        });
+
+        // Tabs per i progetti
+        const yearTabs = document.querySelectorAll('.year-tab');
+        const projectsGrids = document.querySelectorAll('.projects-grid');
+        
+        yearTabs.forEach((tab, index) => {
+            tab.addEventListener('click', function() {
+                // Rimuove la classe active da tutte le tabs
+                yearTabs.forEach(t => t.classList.remove('active'));
+                // Aggiunge la classe active alla tab cliccata
+                this.classList.add('active');
+                // Nascondi tutti i grid di progetti
+                projectsGrids.forEach(grid => grid.style.display = 'none');
+                // Mostra il grid corrispondente alla tab cliccata
+                projectsGrids[index].style.display = 'grid';
+            });
+        });
+        
+        // Smooth scroll per i link di navigazione
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentazione Progetto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #525eff;
+            --secondary: #824dff;
+            --dark: #111033;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --gray: #e6e8e9;
+            --text: #333333;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            background-color: rgb(150, 230, 250);
+            line-height: 1.6;
+        }
+        
+        /* Layout Principale */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+        }
+        
+        /* Header e navigazione */
+        header {
+            background-color: transparent;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.sticky {
+            background-color: var(--white);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-tagline {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .hero-name {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Project Documentation */
+        .project-documentation {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 60px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: var(--white);
+            border: 4px solid var(--primary);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -13px;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background-color: var(--light);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .timeline-description {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .timeline-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-container {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: auto; /* Ensure the image maintains its aspect ratio */
+            object-fit: contain; /* Ensure the entire image is visible */
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Results Section */
+        .results {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+        
+        .results-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .final-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .results-text {
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .results-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .results-description {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-text {
+            color: var(--light);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .footer-copyright {
+            color: var(--light);
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 1100px) {
+            .hero-name {
+                font-size: 3.2rem;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .section {
+                padding: 70px 0;
+            }
+            
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-description {
+                margin: 0 auto 40px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Back</a>
+                <ul class="nav-links">
+                    <li><a href="#overview">Panoramica</a></li>
+                    <li><a href="#process">Svolgimento</a></li>
+                    <li><a href="#results">Risultati</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="overview" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-tagline">Documentazione del Progetto</p>
+                <h1 class="hero-name">BUSCONNECT</h1>
+                <p class="hero-description">Abbiamo concluso con successo il nostro progetto di formazione digitale, durante il quale noi studenti delle classi terze abbiamo avuto l'opportunità di insegnare competenze digitali a pensionati, anziani, studenti di scuola media e persone con disabilità. Ognuno di noi è stato assegnato a un percorso formativo specifico e si è occupato sia della preparazione che della gestione delle lezioni. È stata un'esperienza arricchente che ci ha permesso di condividere le nostre conoscenze e di fare davvero la differenza per gli altri!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Documentation Timeline -->
+    <section id="process" class="project-documentation">
+        <div class="container">
+            <h2 class="section-title">Ecco i vari step:</h2>
+            <div class="timeline">
+                <!-- Fase 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-date">1</span>
+                        <h3 class="timeline-title">Divisione nei vari gruppi</h3>
+                        <p class="timeline-description">Durante questa fase iniziale, abbiamo fatto compilare a tutti i partecipanti un modulo per capire meglio quanto già sapesse di informatica ognuno di loro, in modo da poterli smistare in modo omogeneo. </p>    
+                    </div>
+                </div>
+                
+                <!-- Fase 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2</span>
+                        <h3 class="timeline-title">Primo incontro</h3>
+                        <p class="timeline-description">Appena dopo la divisione nei vari gruppi, abbiamo presentato agli anziani il programma di formazione digitale, spiegando loro l’obiettivo e i dettagli del progetto. Ognuno di noi studenti ha avuto il compito di affiancare due persone durante le lezioni, offrendo supporto e guidandole passo dopo passo. È stato un modo per creare un legame più personale e assicurare che ogni partecipante fosse seguito con attenzione e cura.</p>
+                        <div class="image-container">
+                            <img src="img/bc1.jpg" alt="Materiale 1" class="gallery-image">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fase 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-date">3</span>
+                        <h3 class="timeline-title">Le lezioni seguenti</h3>
+                        <p class="timeline-description">Durante le seguenti lezioni, in accordo con le due signore che stavo seguendo, ci siamo occupati soprattutto di pre e post produzione  fotografico dato che era la cosa che più interessava ad entrambe</p>
+                        <img src="img/bc2.jpg" alt="Sviluppo iniziale" class="timeline-image">
+                    </div>
+                </div>
+                
+                <!-- Fase 4 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-date">4</span>
+                        <h3 class="timeline-title">Prove pratiche</h3>
+                        <p class="timeline-description">Nelle ultime lezioni ci siamo occupati sopratutto di "testare" tutte le nuove cose imparate nel concreto. <br> Analizzando i modelli e le fotocamere degli smartphone delle due signore siamo riusciti a provare tutte le impostazioni e funzionalità di pre/post produzione. </p>
+                        <div class="image-container">                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fase 5 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-date">5</span>
+                        <h3 class="timeline-title">Opinione personale</h3>
+                        <p class="timeline-description">Ho trovato questo progetto molto interessante dato che inizialmente ero un po' timoroso del fatto di dover gestire "da solo" queste lezioni, ma vedendo la soddisfazione delle signore alla quale nel mio piccolo sono riuscito ad insegnare qualcosa, ogni tipo di paura ed insicurezza è sparito rendendo questa esperienza unica</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results">
+        <div class="container">
+            <h2 class="section-title">Risultati Finali</h2>
+            <div class="results-content">
+                <img src="img/bc3.jpg" alt="Risultato finale del progetto" class="final-image">
+                <div class="results-text">
+                    <h3 class="results-title">Competenze Acquisite</h3>
+                    <p class="results-description">Durante il progetto, abbiamo acquisito competenze trasversali fondamentali, come la comunicazione efficace, la gestione del tempo e la capacità di lavorare in team. Queste abilità non solo ci hanno aiutato a gestire il progetto con successo, ma ci saranno utili anche in futuro.</p>
+                    <ul style="list-style-position: inside; text-align: center; padding: 0;">
+                        <li style="text-align: left;"><strong>Competenza personale:</strong> Capacità di imparare ad imparare.</li>
+                        <li style="text-align: left;"><strong>Competenza alfabetica funzionale:</strong> Sviluppo di abilità linguistiche e comunicative.</li>
+                        <li style="text-align: left;"><strong>Competenza imprenditoriale:</strong> Capacità di pianificare e gestire progetti.</li>
+                        <li style="text-align: left;"><strong>Competenza in materia di cittadinanza:</strong> Consapevolezza e partecipazione attiva nella società.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">Questo progetto è stato documentato passo dopo passo per condividere il processo di sviluppo.</p>
+            <p class="footer-copyright">© 2025 Samuele Macrì.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('fade-out');
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // Header sticky
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 50);
+        });
+
+        // Smooth scrolling per i link di navigazione
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
