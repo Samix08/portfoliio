@@ -48,7 +48,7 @@
         .section-title {
             font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 60px;
+            margin-bottom: 40px; /* Ridotto lo spazio sotto il titolo */
             text-align: center;
             color: var(--dark);
             position: relative;
@@ -98,44 +98,68 @@
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 20px;
         }
-        
+
         .nav-links li {
-            margin-left: 40px;
+            margin: 0;
         }
-        
-        .nav-links a {
+
+        .nav-links li a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            position: relative;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+            position: relative; /* Necessario per la striscia */
+            font-size: 1rem; /* Dimensione base */
+            transition: color 0.3s ease;
         }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a:after {
+
+        .nav-links li a:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background-color: var(--primary);
             transition: width 0.3s ease;
         }
-        
-        .nav-links a:hover:after {
-            width: 100%;
+
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links li a:hover:after {
+            width: 100%; /* Mostra la striscia sotto */
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap; /* Permette di andare a capo se necessario */
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .nav-links li a {
+                font-size: 0.9rem; /* Rimpicciolisce il testo */
+                padding: 8px 10px; /* Riduce il padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links li a {
+                font-size: 0.8rem; /* Ulteriore riduzione del testo */
+                padding: 6px 8px; /* Ulteriore riduzione del padding */
+            }
         }
         
         /* Hero section */
         .hero {
             background: linear-gradient(to bottom, var(--dark), #333);
             color: var(--white);
+            padding-bottom: 40px; /* Ridotto lo spazio extra sotto */
         }
         
         .hero-content {
@@ -143,6 +167,17 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            padding-top: 100px; /* Spazio sopra per il menu */
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding-bottom: 50px; /* Spazio leggermente maggiore per dispositivi mobili */
+            }
+            
+            .hero-content {
+                padding-top: 120px; /* Spazio maggiore sopra per dispositivi mobili */
+            }
         }
         
         .hero-tagline {
@@ -166,6 +201,17 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            padding: 20px; /* Aggiunto padding per spazio interno */
+            background-color: rgba(255, 255, 255, 0.1); /* Sfondo semi-trasparente */
+            border-radius: 12px; /* Angoli arrotondati */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombra per effetto rilievo */
+            line-height: 1.8; /* Migliora la leggibilità */
+        }
+
+        .hero-description:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Cambia colore al passaggio del cursore */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Aumenta l'ombra */
+            transition: all 0.3s ease-in-out; /* Transizione fluida */
         }
         
         /* Project Documentation */
@@ -292,7 +338,7 @@
         /* Results Section */
         .results {
             background-color: var(--white);
-            padding: 80px 0;
+            padding: 60px 0; /* Ridotto lo spazio sopra e sotto */
         }
         
         .results-content {
@@ -326,7 +372,52 @@
             color: var(--text);
             margin-bottom: 30px;
         }
-        
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to bottom, var(--light), var(--white));
+        }
+
+        thead tr {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--gray); /* Linea di separazione */
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: var(--light); /* Riga pari con sfondo chiaro */
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: var(--white); /* Riga dispari con sfondo bianco */
+        }
+
+        tbody tr:hover {
+            background-color: rgba(82, 94, 255, 0.1); /* Evidenzia riga al passaggio del cursore */
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
         /* Footer improvements */
         footer {
             background: var(--dark);
@@ -430,7 +521,9 @@
             <div class="hero-content">
                 <p class="hero-tagline">Documentazione del Progetto</p>
                 <h1 class="hero-name">BUSCONNECT</h1>
-                <p class="hero-description">Abbiamo concluso con successo il nostro progetto di formazione digitale, durante il quale noi studenti delle classi terze abbiamo avuto l'opportunità di insegnare competenze digitali a pensionati, anziani, studenti di scuola media e persone con disabilità. Ognuno di noi è stato assegnato a un percorso formativo specifico e si è occupato sia della preparazione che della gestione delle lezioni. È stata un'esperienza arricchente che ci ha permesso di condividere le nostre conoscenze e di fare davvero la differenza per gli altri!</p>
+                <p class="hero-description">
+                    Abbiamo concluso con successo il nostro progetto di formazione digitale, durante il quale noi studenti delle classi terze abbiamo avuto l'opportunità di insegnare competenze digitali a pensionati, anziani, studenti di scuola media e persone con disabilità. Ognuno di noi è stato assegnato a un percorso formativo specifico e si è occupato sia della preparazione che della gestione delle lezioni. È stata un'esperienza arricchente che ci ha permesso di condividere le nostre conoscenze e di fare davvero la differenza per gli altri!
+                </p>
             </div>
         </div>
     </section>
@@ -506,29 +599,29 @@
                     <p class="results-description" style="margin-bottom: 30px;">Durante il progetto, abbiamo acquisito competenze trasversali fondamentali, come la comunicazione efficace, la gestione del tempo e la capacità di lavorare in team. Queste abilità non solo ci hanno aiutato a gestire il progetto con successo, ma ci saranno utili anche in futuro.</p>
                 </div>
                 <div style="width: 100%; max-width: 900px;">
-                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background: linear-gradient(to bottom, var(--light), var(--white));">
+                    <table>
                         <thead>
-                            <tr style="background-color: var(--primary); color: var(--white);">
-                                <th style="padding: 15px; text-align: center;">Competenza</th>
-                                <th style="padding: 15px; text-align: center;">Descrizione</th>
+                            <tr>
+                                <th>Competenza</th>
+                                <th>Descrizione</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="background-color: var(--light);">
-                                <td style="padding: 15px; border: 1px solid var(--gray);"><strong>Competenza personale</strong></td>
-                                <td style="padding: 15px; border: 1px solid var(--gray);">Capacità di imparare ad imparare.</td>
+                            <tr>
+                                <td><strong>Competenza personale</strong></td>
+                                <td>Capacità di imparare ad imparare.</td>
                             </tr>
                             <tr>
-                                <td style="padding: 15px; border: 1px solid var(--gray);"><strong>Competenza alfabetica funzionale</strong></td>
-                                <td style="padding: 15px; border: 1px solid var(--gray);">Sviluppo di abilità linguistiche e comunicative.</td>
-                            </tr>
-                            <tr style="background-color: var(--light);">
-                                <td style="padding: 15px; border: 1px solid var(--gray);"><strong>Competenza imprenditoriale</strong></td>
-                                <td style="padding: 15px; border: 1px solid var(--gray);">Capacità di pianificare e gestire progetti.</td>
+                                <td><strong>Competenza alfabetica funzionale</strong></td>
+                                <td>Sviluppo di abilità linguistiche e comunicative.</td>
                             </tr>
                             <tr>
-                                <td style="padding: 15px; border: 1px solid var(--gray);"><strong>Competenza in materia di cittadinanza</strong></td>
-                                <td style="padding: 15px; border: 1px solid var(--gray);">Consapevolezza e partecipazione attiva nella società.</td>
+                                <td><strong>Competenza imprenditoriale</strong></td>
+                                <td>Capacità di pianificare e gestire progetti.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Competenza in materia di cittadinanza</strong></td>
+                                <td>Consapevolezza e partecipazione attiva nella società.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -540,7 +633,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p class="footer-text">Grazie per aver letto la documentazione del progetto. Speriamo che questa esperienza possa ispirarti!</p>
+            <p class="footer-text">Grazie per aver letto la documentazione del progetto.</p>
             <p class="footer-copyright">© 2025 Samuele Macrì.</p>
         </div>
     </footer>
