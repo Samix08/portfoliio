@@ -28,7 +28,7 @@
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             color: var(--text);
-            background-color: rgb(150, 230, 250);
+            background-color: lightblue;
             line-height: 1.6;
         }
         
@@ -48,7 +48,7 @@
         .section-title {
             font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 60px;
+            margin-bottom: 40px; /* Ridotto lo spazio sotto il titolo */
             text-align: center;
             color: var(--dark);
             position: relative;
@@ -98,49 +98,68 @@
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 20px;
         }
-        
+
         .nav-links li {
-            margin-left: 40px;
+            margin: 0;
         }
-        
-        .nav-links a {
+
+        .nav-links li a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            position: relative;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+            position: relative; /* Necessario per la striscia */
+            font-size: 1rem; /* Dimensione base */
+            transition: color 0.3s ease;
         }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a:after {
+
+        .nav-links li a:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background-color: var(--primary);
             transition: width 0.3s ease;
         }
-        
-        .nav-links a:hover:after {
-            width: 100%;
+
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links li a:hover:after {
+            width: 100%; /* Mostra la striscia sotto */
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap; /* Permette di andare a capo se necessario */
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .nav-links li a {
+                font-size: 0.9rem; /* Rimpicciolisce il testo */
+                padding: 8px 10px; /* Riduce il padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links li a {
+                font-size: 0.8rem; /* Ulteriore riduzione del testo */
+                padding: 6px 8px; /* Ulteriore riduzione del padding */
+            }
         }
         
         /* Hero section */
         .hero {
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            background: var(--dark);
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
+            background: linear-gradient(to bottom, var(--dark), #333);
+            color: var(--white);
+            padding-bottom: 40px; /* Ridotto lo spazio extra sotto */
         }
         
         .hero-content {
@@ -148,6 +167,17 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            padding-top: 100px; /* Spazio sopra per il menu */
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding-bottom: 50px; /* Spazio leggermente maggiore per dispositivi mobili */
+            }
+            
+            .hero-content {
+                padding-top: 120px; /* Spazio maggiore sopra per dispositivi mobili */
+            }
         }
         
         .hero-tagline {
@@ -162,6 +192,19 @@
             font-weight: 800;
             margin-bottom: 20px;
             color: var(--white);
+            word-wrap: break-word; /* Assicura che il testo si adatti */
+        }
+
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 2.5rem; /* Riduce la dimensione del titolo su schermi piccoli */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: 2rem; /* Ulteriore riduzione su schermi molto piccoli */
+            }
         }
         
         .hero-description {
@@ -171,6 +214,17 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            padding: 20px; /* Aggiunto padding per spazio interno */
+            background-color: rgba(255, 255, 255, 0.1); /* Sfondo semi-trasparente */
+            border-radius: 12px; /* Angoli arrotondati */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombra per effetto rilievo */
+            line-height: 1.8; /* Migliora la leggibilità */
+        }
+
+        .hero-description:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Cambia colore al passaggio del cursore */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Aumenta l'ombra */
+            transition: all 0.3s ease-in-out; /* Transizione fluida */
         }
         
         /* Project Documentation */
@@ -239,8 +293,10 @@
         }
         
         .timeline-content:hover {
+            background-color: var(--primary);
+            color: var(--white);
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
         .timeline-date {
@@ -291,11 +347,53 @@
         .gallery-image:hover {
             transform: scale(1.05);
         }
+
+        .gallery-container {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .gallery-images img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .gallery-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .gallery-indicator {
+            width: 10px;
+            height: 10px;
+            background-color: var(--gray);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .gallery-indicator.active {
+            background-color: var(--primary);
+        }
         
         /* Results Section */
         .results {
             background-color: var(--white);
-            padding: 80px 0;
+            padding: 60px 0; /* Ridotto lo spazio sopra e sotto */
         }
         
         .results-content {
@@ -329,28 +427,89 @@
             color: var(--text);
             margin-bottom: 30px;
         }
-        
-        /* Footer */
-        footer {
-            background: #333;
-            color: #fff;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to bottom, var(--light), var(--white));
+        }
+
+        thead tr {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        th, td {
+            padding: 15px;
             text-align: center;
-            padding: 30px 0;
+            border-bottom: 1px solid var(--gray); /* Linea di separazione */
         }
-        
+
+        tbody tr:nth-child(even) {
+            background-color: var(--light); /* Riga pari con sfondo chiaro */
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: var(--white); /* Riga dispari con sfondo bianco */
+        }
+
+        tbody tr:hover {
+            background-color: rgba(82, 94, 255, 0.1); /* Evidenzia riga al passaggio del cursore */
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Footer improvements */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 40px 0;
+        }
+
         .footer-text {
-            color: var(--light);
-            opacity: 0.7;
-            max-width: 600px;
-            margin: 0 auto 20px;
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
-        
+
         .footer-copyright {
-            color: var(--light);
-            opacity: 0.5;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
-        
+
+        /* Add subtle animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item, .results-content {
+            animation: fadeIn 1s ease-in-out;
+        }
+
         /* Media Queries */
         @media screen and (max-width: 1100px) {
             .hero-name {
@@ -412,12 +571,12 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="overview" class="hero">
+    <section id="overview" class="hero fade-in">
         <div class="container">
             <div class="hero-content">
                 <p class="hero-tagline">Documentazione del Progetto</p>
-                <h1 class="hero-name">BUSCONNECT</h1>
-                <p class="hero-description">Abbiamo concluso con successo il nostro progetto di formazione digitale, durante il quale noi studenti delle classi terze abbiamo avuto l'opportunità di insegnare competenze digitali a pensionati, anziani, studenti di scuola media e persone con disabilità. Ognuno di noi è stato assegnato a un percorso formativo specifico e si è occupato sia della preparazione che della gestione delle lezioni. È stata un'esperienza arricchente che ci ha permesso di condividere le nostre conoscenze e di fare davvero la differenza per gli altri!</p>
+                <h1 class="hero-name">Monta & Smonta</h1>
+                <p class="hero-description">Durante questo progetto la nostra classe ha avuto l’opportunità di smontare e rimontare un computer, osservando da vicino i suoi componenti interni. Ognuno di noi ha ricevuto un PC da analizzare e, guidati dai docenti, abbiamo imparato a riconoscere e comprendere il funzionamento di elementi fondamentali come la scheda madre, il processore, la RAM, l’alimentatore e il sistema di raffreddamento.</p>
             </div>
         </div>
     </section>
@@ -431,8 +590,8 @@
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="timeline-date">1</span>
-                        <h3 class="timeline-title">Divisione nei vari gruppi</h3>
-                        <p class="timeline-description">Durante questa fase iniziale, abbiamo fatto compilare a tutti i partecipanti un modulo per capire meglio quanto già sapesse di informatica ognuno di loro, in modo da poterli smistare in modo omogeneo. </p>    
+                        <h3 class="timeline-title">Preparazione e briefing</h3>
+                        <p class="timeline-description">Prima di iniziare, i docenti ci hanno introdotto al progetto, dedicando una lezione all'illustrazione delle funzioni dei principali componenti di un computer.</p>    
                     </div>
                 </div>
                 
@@ -440,10 +599,10 @@
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="timeline-date">2</span>
-                        <h3 class="timeline-title">Primo incontro</h3>
-                        <p class="timeline-description">Appena dopo la divisione nei vari gruppi, abbiamo presentato agli anziani il programma di formazione digitale, spiegando loro l’obiettivo e i dettagli del progetto. Ognuno di noi studenti ha avuto il compito di affiancare due persone durante le lezioni, offrendo supporto e guidandole passo dopo passo. È stato un modo per creare un legame più personale e assicurare che ogni partecipante fosse seguito con attenzione e cura.</p>
+                        <h3 class="timeline-title">Smontaggio del computer</h3>
+                        <p class="timeline-description">Dopo aver preso i materiali necessari, con attenzione, abbiamo iniziato a smontare il PC, rimuovendo il pannello laterale e identificando ogni componente interno. Seguendo le istruzioni dei docenti, abbiamo estratto la scheda madre, il processore, la RAM, l’alimentatore e le altre parti, osservando da vicino la loro disposizione e connessione.</p>
                         <div class="image-container">
-                            <img src="img/bc1.jpg" alt="Materiale 1" class="gallery-image">
+                            <img src="img/ms2.jpg" alt="Materiale 1" class="gallery-image">
                             
                         </div>
                     </div>
@@ -453,9 +612,40 @@
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="timeline-date">3</span>
-                        <h3 class="timeline-title">Le lezioni seguenti</h3>
-                        <p class="timeline-description">Durante le seguenti lezioni, in accordo con le due signore che stavo seguendo, ci siamo occupati soprattutto di pre e post produzione  fotografico dato che era la cosa che più interessava ad entrambe</p>
-                        <img src="img/bc2.jpg" alt="Sviluppo iniziale" class="timeline-image">
+                        <h3 class="timeline-title">Analisi dei componenti</h3>
+                        <p class="timeline-description">Dopo aver separato i vari elementi, ci siamo soffermati sull’analisi di ciascun pezzo. Abbiamo discusso il ruolo e il funzionamento di ogni componente, comprendendo l’importanza di ciascun elemento nel sistema informatico.</p>
+                        <div class="gallery-container">
+                            <div class="gallery-images" id="gallery">
+                                <!-- Immagini da ms3 a ms26 -->
+                                <img src="img/ms3.jpg" alt="Component 1">
+                                <img src="img/ms4.jpg" alt="Component 2">
+                                <img src="img/ms1.jpg" alt="Component 3">
+                                <img src="img/ms6.jpg" alt="Component 4">
+                                <img src="img/ms7.jpg" alt="Component 5">
+                                <img src="img/ms8.jpg" alt="Component 6">
+                                <img src="img/ms9.jpg" alt="Component 7">
+                                <img src="img/ms10.jpg" alt="Component 8">
+                                <img src="img/ms11.jpg" alt="Component 9">
+                                <img src="img/ms12.jpg" alt="Component 10">
+                                <img src="img/ms13.jpg" alt="Component 11">
+                                <img src="img/ms14.jpg" alt="Component 12">
+                                <img src="img/ms15.jpg" alt="Component 13">
+                                <img src="img/ms16.jpg" alt="Component 14">
+                                <img src="img/ms17.jpg" alt="Component 15">
+                                <img src="img/ms18.jpg" alt="Component 16">
+                                <img src="img/ms19.jpg" alt="Component 17">
+                                <img src="img/ms20.jpg" alt="Component 18">
+                                <img src="img/ms21.jpg" alt="Component 19">
+                                <img src="img/ms22.jpg" alt="Component 20">
+                                <img src="img/ms23.jpg" alt="Component 21">
+                                <img src="img/ms24.jpg" alt="Component 22">
+                                <img src="img/ms25.jpg" alt="Component 23">
+                                <img src="img/ms26.jpg" alt="Component 24">
+                            </div>
+                            <div class="gallery-indicators" id="galleryIndicators">
+                                <!-- Indicators will be dynamically generated -->
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -463,8 +653,8 @@
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="timeline-date">4</span>
-                        <h3 class="timeline-title">Prove pratiche</h3>
-                        <p class="timeline-description">Nelle ultime lezioni ci siamo occupati sopratutto di "testare" tutte le nuove cose imparate nel concreto. <br> Analizzando i modelli e le fotocamere degli smartphone delle due signore siamo riusciti a provare tutte le impostazioni e funzionalità di pre/post produzione. </p>
+                        <h3 class="timeline-title">Rimontaggio del computer</h3>
+                        <p class="timeline-description">Dopo aver esaminato i pezzi, abbiamo proceduto a rimontare il PC, riattaccando ogni parte con precisione. È stata una sfida interessante, che ci ha insegnato l’importanza della pazienza e della cura nei dettagli per garantire il corretto funzionamento del dispositivo.</p>
                         <div class="image-container">                            
                         </div>
                     </div>
@@ -474,8 +664,8 @@
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="timeline-date">5</span>
-                        <h3 class="timeline-title">Opinione personale</h3>
-                        <p class="timeline-description">Ho trovato questo progetto molto interessante dato che inizialmente ero un po' timoroso del fatto di dover gestire "da solo" queste lezioni, ma vedendo la soddisfazione delle signore alla quale nel mio piccolo sono riuscito ad insegnare qualcosa, ogni tipo di paura ed insicurezza è sparito rendendo questa esperienza unica</p>
+                        <h3 class="timeline-title">Conclusioni</h3>
+                        <p class="timeline-description">Una volta rimontato il computer, abbiamo testato il suo funzionamento e verificato che ogni componente fosse correttamente installato. Confrontando le nostre osservazioni, abbiamo riflettuto su ciò che abbiamo imparato e apprezzato la possibilità di esplorare l’hardware in modo pratico e concreto.</p>
                         
                     </div>
                 </div>
@@ -487,17 +677,36 @@
     <section id="results" class="results">
         <div class="container">
             <h2 class="section-title">Risultati Finali</h2>
-            <div class="results-content">
-                <img src="img/bc3.jpg" alt="Risultato finale del progetto" class="final-image">
-                <div class="results-text">
-                    <h3 class="results-title">Competenze Acquisite</h3>
-                    <p class="results-description">Durante il progetto, abbiamo acquisito competenze trasversali fondamentali, come la comunicazione efficace, la gestione del tempo e la capacità di lavorare in team. Queste abilità non solo ci hanno aiutato a gestire il progetto con successo, ma ci saranno utili anche in futuro.</p>
-                    <ul style="list-style-position: inside; text-align: center; padding: 0;">
-                        <li style="text-align: left;"><strong>Competenza personale:</strong> Capacità di imparare ad imparare.</li>
-                        <li style="text-align: left;"><strong>Competenza alfabetica funzionale:</strong> Sviluppo di abilità linguistiche e comunicative.</li>
-                        <li style="text-align: left;"><strong>Competenza imprenditoriale:</strong> Capacità di pianificare e gestire progetti.</li>
-                        <li style="text-align: left;"><strong>Competenza in materia di cittadinanza:</strong> Consapevolezza e partecipazione attiva nella società.</li>
-                    </ul>
+            <div class="results-content" style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
+                <div class="results-text" style="text-align: center; max-width: 800px;">
+                    <h3 class="results-title" style="margin-bottom: 20px;">Competenze Acquisite</h3>
+                    <p class="results-description" style="margin-bottom: 30px;">Grazie al progetto Monta&Smonta, abbiamo sviluppato competenze trasversali fondamentali, che ci hanno aiutato non solo a portare a termine il lavoro con successo, ma che saranno preziose anche in futuro.</p>
+                </div>
+                <div style="width: 100%; max-width: 900px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Competenza</th>
+                                <th>Descrizione</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Competenza personale, sociale e capacità di imparare a imparare</strong></td>
+                                <td>Abbiamo sviluppato autonomia, collaborazione e adattabilità nell'affrontare nuove sfide.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Competenza matematica e competenza in scienze, tecnologia e ingegneria</strong></td>
+                                <td>Abbiamo applicato logica e principi informatici per comprendere l’architettura e il funzionamento dell’hardware.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Competenza digitale</strong></td>
+                                <td>Abbiamo acquisito conoscenze pratiche sulla gestione, manutenzione e assemblaggio di un computer.</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -506,7 +715,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p class="footer-text">Questo progetto è stato documentato passo dopo passo per condividere il processo di sviluppo.</p>
+            <p class="footer-text">Grazie per aver letto la documentazione del progetto.</p>
             <p class="footer-copyright">© 2025 Samuele Macrì.</p>
         </div>
     </footer>
@@ -528,7 +737,7 @@
             header.classList.toggle('sticky', window.scrollY > 50);
         });
 
-        // Smooth scrolling per i link di navigazione
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -537,6 +746,44 @@
                 });
             });
         });
+
+        // Scorrimento automatico della galleria
+        const gallery = document.getElementById('gallery');
+        const images = gallery.children;
+        const totalImages = images.length;
+        const indicatorsContainer = document.getElementById('galleryIndicators');
+        let currentIndex = 0;
+
+        // Creazione degli indicatori
+        for (let i = 0; i < totalImages; i++) {
+            const indicator = document.createElement('div');
+            indicator.classList.add('gallery-indicator');
+            if (i === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => moveToSlide(i));
+            indicatorsContainer.appendChild(indicator);
+        }
+
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.gallery-indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function moveToSlide(index) {
+            currentIndex = index;
+            const offset = -currentIndex * 100;
+            gallery.style.transform = `translateX(${offset}%)`;
+            updateIndicators();
+        }
+
+        function autoScrollGallery() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            moveToSlide(currentIndex);
+        }
+
+        // Avvio dello scorrimento automatico ogni 3 secondi
+        setInterval(autoScrollGallery, 3000);
     </script>
 </body>
 </html>
